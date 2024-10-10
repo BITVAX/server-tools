@@ -31,13 +31,6 @@ class Image(models.Model):
     _inherit = "image.mixin"
     _order = "sequence, owner_model, owner_id, id"
     _description = """ image model for multiple image functionality """
-    _sql_constraints = [
-        (
-            "uniq_name_owner",
-            "UNIQUE(owner_id, owner_model, name)",
-            _("A document can have only one image with the same name."),
-        ),
-    ]
 
     # This Integer is really a split Many2one
     owner_id = fields.Integer(string="Owner", required=True)
